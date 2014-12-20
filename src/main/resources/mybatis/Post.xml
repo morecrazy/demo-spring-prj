@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morecrazy.myspring.dao.mybatis.PostDao">
+
+	<resultMap type="Post" id="postResultMap">
+		<id property="postId" column="post_id" />
+		<result property="boardId" column="board_id" />
+		<result property="topicId" column="topic_id" />
+		<result property="userId" column="user_id" />
+		<result property="postType" column="post_type" />
+		<result property="postTitile" column="post_title" />
+		<result property="postText" column="post_text" />
+		<result property="createTime" column="create_time" />
+	</resultMap>
+
+	<select id="get" parameterType="int" resultMap="postResultMap">
+		SELECT *
+		FROM
+		t_post
+		WHERE post_id =#{postId}
+	</select>
+
+	<insert id="save" parameterType="Post">
+		INSERT INTO
+		t_post(post_id,board_id,topic_id,user_id,post_type,post_title,post_text,create_time)
+		VALUES(#{postId},#{boardId},#{topicId},#{userId},#{postType},#{postTitle},#{postText},#{createTime})
+	</insert>
+
+	<update id="update" parameterType="Post">
+		UPDATE t_post p
+		SET
+		post_title=#{postTitle},post_text=#{postText}
+		WHERE p.post_id =
+		#{postId}
+	</update>
+
+	<delete id="remove" parameterType="Post">
+		delete
+		from t_post p
+		where p.post_id = #{postId}
+	</delete>
+	
+	<delete id="deleteTopicPosts" parameterType="int">
+		delete
+		from t_post
+		where topic_id = #{topicId}
+	</delete>
+</mapper>

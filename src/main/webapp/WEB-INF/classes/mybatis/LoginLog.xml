@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morecrazy.myspring.dao.mybatis.LoginLogDao">
+  <insert id="save" parameterType="LoginLog">
+    INSERT INTO t_login_log(login_log_id,user_id,ip,login_datetime) 
+    VALUES(#{loginLogId},#{userId},#{ip},#{userId},#{loginDate})
+  </insert>
+</mapper>

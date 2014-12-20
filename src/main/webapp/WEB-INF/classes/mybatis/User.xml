@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morecrazy.myspring.dao.mybatis.UserDao">
+
+	<resultMap type="User" id="userResultMap">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="userType" column="user_type" />
+		<result property="locked" column="locked" />
+		<result property="credit" column="credit" />
+		<result property="lastVisit" column="last_visit" />
+		<result property="lastIp" column="last_ip" />
+	</resultMap>
+
+	<select id="get" parameterType="int" resultMap="userResultMap">
+		SELECT * from
+		t_user
+		WHERE user_id = #{userId}
+	</select>
+
+	<select id="getUserByUserName" parameterType="string" resultMap="userResultMap">
+		SELECT *
+		FROM t_user u
+		WHERE u.user_name = #{userName}
+	</select>
+
+	<select id="queryUserByUserName" parameterType="string"
+		resultMap="userResultMap">
+		SELECT *
+		FROM t_user u
+		WHERE u.user_name LIKE #{userName}
+	</select>
+
+	<select id="loadAll" resultMap="userResultMap">
+		select *
+		from t_user
+	</select>
+	<insert id="save" parameterType="User">
+		INSERT INTO
+		t_user(user_id,user_name,password,user_type,locked,credit,last_visit,last_ip)
+		VALUES(#{userId},#{userName},#{password},#{userType},#{locked},#{credit},#{lastVisit},#{lastIp})
+	</insert>
+	<update id="update" parameterType="User">
+		UPDATE t_user u
+		SET
+		user_name=#{userName},user_type=#{userType}
+		WHERE u.user_id =
+		#{userId}
+	</update>
+</mapper>

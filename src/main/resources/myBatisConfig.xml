@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="Board" type="com.morecrazy.myspring.domain.Board" />
+		<typeAlias alias="Topic" type="com.morecrazy.myspring.domain.Topic" />
+		<typeAlias alias="Post" type="com.morecrazy.myspring.domain.Post" />
+		<typeAlias alias="User" type="com.morecrazy.myspring.domain.User" />
+		<typeAlias alias="LoginLog" type="com.morecrazy.myspring.domain.LoginLog" />
+	</typeAliases>
+</configuration>
